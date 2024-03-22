@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="PickupAndThrow"
 
+[editor]
+
+movie_writer/movie_file="I:/_MyGodot/PickupAndThrow.avi"
+movie_writer/fps=30
+
 [input]
 
 move_right={
