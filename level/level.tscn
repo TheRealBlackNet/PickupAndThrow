@@ -1,0 +1,246 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1vprg51d1v3l"]
+
+[ext_resource type="PackedScene" uid="uid://bhiq1p5jxi74f" path="res://player/player.tscn" id="1_vaejh"]
+[ext_resource type="PackedScene" uid="uid://cp1bw4cdiwrge" path="res://items/Box.tscn" id="2_7yw2x"]
+[ext_resource type="PackedScene" uid="uid://d4hmpm1g1pxhx" path="res://items/Ball.tscn" id="3_ucj52"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkehv"]
+albedo_color = Color(0, 0.352941, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyaxv"]
+albedo_color = Color(0.262745, 0.733333, 0.909804, 1)
+
+[sub_resource type="Environment" id="Environment_pjr2f"]
+background_mode = 1
+background_color = Color(0.45098, 0.862745, 1, 1)
+background_energy_multiplier = 1.32
+
+[node name="Level" type="Node3D"]
+
+[node name="geometry" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ground" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.4, -2)
+use_collision = true
+size = Vector3(31, 1, 31)
+material = SubResource("StandardMaterial3D_jkehv")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="walls1" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1.5, -2)
+material_override = SubResource("StandardMaterial3D_oyaxv")
+use_collision = true
+size = Vector3(1, 6, 31)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="walls2" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.5, -2)
+material_override = SubResource("StandardMaterial3D_oyaxv")
+use_collision = true
+size = Vector3(1, 6, 31)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="walls3" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.999999, 1.5, 14)
+material_override = SubResource("StandardMaterial3D_oyaxv")
+use_collision = true
+size = Vector3(1, 6, 31)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="walls4" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1.5, -18)
+material_override = SubResource("StandardMaterial3D_oyaxv")
+use_collision = true
+size = Vector3(1, 6, 31)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="geometry"]
+environment = SubResource("Environment_pjr2f")
+
+[node name="Sun" type="DirectionalLight3D" parent="geometry"]
+transform = Transform3D(0.0189167, -0.634658, -0.772562, 0.459855, -0.680597, 0.570369, -0.887792, -0.366056, 0.278976, -14.6349, 2.07997, -15.4423)
+shadow_enabled = true
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("pickupAbleDropNode", "throwAbleDropNode") instance=ExtResource("1_vaejh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0740204, 0.1, 0.519538)
+pickupAbleDropNode = NodePath("../BoxesDropper")
+throwAbleDropNode = NodePath("../BallsDropper")
+
+[node name="BoxesDropper" type="Node3D" parent="."]
+
+[node name="Box" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36601, 0.0999998, -9.98256)
+
+[node name="Box7" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31488, 0.0999997, -9.44962)
+
+[node name="Box8" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.33792, 0.0999995, -7.79749)
+
+[node name="Box9" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.302, 0.0999995, -7.6939)
+
+[node name="Box10" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48795, 0.0999995, -9.41023)
+
+[node name="Box11" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14859, 0.0999995, -7.32987)
+
+[node name="Box2" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59249, 0.0999998, -9.98256)
+
+[node name="Box3" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.856389, 0.0999998, -9.98256)
+
+[node name="Box4" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20928, 0.880171, -9.98256)
+
+[node name="Box5" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00218, 0.880171, -9.98256)
+
+[node name="Box6" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6009, 1.58241, -9.98256)
+
+[node name="Box12" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -11.7382)
+
+[node name="Box13" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -11.7382)
+
+[node name="Box14" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -11.7382)
+
+[node name="Box15" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -10.1008)
+
+[node name="Box16" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -10.1008)
+
+[node name="Box17" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -10.1008)
+
+[node name="Box18" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -6.40888)
+
+[node name="Box19" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -6.40888)
+
+[node name="Box20" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -6.40888)
+
+[node name="Box21" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -5.64358)
+
+[node name="Box22" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -5.64358)
+
+[node name="Box23" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -5.64358)
+
+[node name="Box24" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -4.85499)
+
+[node name="Box25" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -4.85499)
+
+[node name="Box26" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -4.85499)
+
+[node name="Box27" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, -0.952446)
+
+[node name="Box28" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, -0.952446)
+
+[node name="Box29" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, -0.952446)
+
+[node name="Box30" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, 2.5491)
+
+[node name="Box31" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, 2.5491)
+
+[node name="Box32" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, 2.5491)
+
+[node name="Box33" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, 5.91927)
+
+[node name="Box34" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, 5.91927)
+
+[node name="Box35" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, 5.91927)
+
+[node name="Box36" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.12488, 5.91927)
+
+[node name="Box37" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.8145, 5.91927)
+
+[node name="Box38" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 3.5121, 5.91927)
+
+[node name="Box39" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, 7.90406)
+
+[node name="Box40" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, 7.90406)
+
+[node name="Box41" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, 7.90406)
+
+[node name="Box42" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.12488, 7.90406)
+
+[node name="Box43" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.8145, 7.90406)
+
+[node name="Box44" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 3.5121, 7.90406)
+
+[node name="Box45" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.0821701, 6.95797)
+
+[node name="Box46" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 0.771796, 6.95797)
+
+[node name="Box47" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 1.46939, 6.95797)
+
+[node name="Box48" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.12488, 6.95797)
+
+[node name="Box49" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 2.8145, 6.95797)
+
+[node name="Box50" parent="BoxesDropper" instance=ExtResource("2_7yw2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.557, 3.5121, 6.95797)
+
+[node name="BallsDropper" type="Node3D" parent="."]
+transform = Transform3D(1, -3.4859e-07, -1.33837e-06, 3.4859e-07, 1, 1.73984e-05, 1.33837e-06, -1.73984e-05, 1, 0, 0, 0)
+
+[node name="Ball" parent="BallsDropper" instance=ExtResource("3_ucj52")]
+transform = Transform3D(1, 3.48613e-07, 1.33836e-06, -3.48566e-07, 1, -1.73984e-05, -1.33837e-06, 1.73984e-05, 1, -0.605561, 0.668396, -9.68254)
+
+[node name="Ball2" parent="BallsDropper" instance=ExtResource("3_ucj52")]
+transform = Transform3D(1, 3.48613e-07, 1.33836e-06, -3.48566e-07, 1, -1.73984e-05, -1.33837e-06, 1.73984e-05, 1, 1.00306, 0.100163, -9.39981)
+
+[node name="Ball3" parent="BallsDropper" instance=ExtResource("3_ucj52")]
+transform = Transform3D(1, 3.48613e-07, 1.33836e-06, -3.48566e-07, 1, -1.73984e-05, -1.33837e-06, 1.73984e-05, 1, 1.02388, 0.683308, -9.34829)
+
+[node name="Ball4" parent="BallsDropper" instance=ExtResource("3_ucj52")]
+transform = Transform3D(1, 3.48613e-07, 1.33836e-06, -3.48566e-07, 1, -1.73984e-05, -1.33837e-06, 1.73984e-05, 1, 1.1019, 1.21602, -9.29497)
+
+[node name="Ball5" parent="BallsDropper" instance=ExtResource("3_ucj52")]
+transform = Transform3D(1, 3.48613e-07, 1.33836e-06, -3.48566e-07, 1, -1.73984e-05, -1.33837e-06, 1.73984e-05, 1, 1.06658, 1.74587, -9.20629)
